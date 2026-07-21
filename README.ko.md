@@ -115,6 +115,24 @@ flowchart LR
 
 의존성 없는 프레임워크‑무관 TypeScript가 [`src/`](src/)에 있습니다.
 
+```ts
+import { Wallet, SettlementEngine } from "./src";
+
+// 시장은 별을 PPP 가격에 팔고, 플랫폼은 실현 원화를 은행에 담는다.
+const fan = new Wallet();
+fan.credit(10_000, /* realizedKrw */ 4_000);   // 원가 0.40/별 (인도네시아)
+fan.creditFree(2_000);                          // 보너스 — 원가 0
+
+const engine = new SettlementEngine({ payoutRatio: 0.60 });
+const gift = fan.spend(6_000);                  // 무료 먼저, 그다음 유료
+engine.accrue(creatorId, gift);                 // 유료 포션만, 그 원가로 적립
+
+const quote = engine.available(creatorId);      // 실현 × 비율 — 항상 실현 이하
+const ledger = engine.ledger(creatorId);        // FIFO 내역, quote 와 정합
+```
+
+K‑wave 시나리오와 solvency 테스트 실행:
+
 ```bash
 npm install && npm test        # 무작위 크로스보더 흐름에서 플랫폼 마진 ≥ 0 검증
 npx tsx examples/k-wave.ts     # 자카르타 → 서울 흐름 출력
