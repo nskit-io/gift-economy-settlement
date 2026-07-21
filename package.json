@@ -1,0 +1,34 @@
+{
+  "name": "gift-economy-settlement",
+  "version": "1.0.0",
+  "description": "Realized-value settlement + FIFO ledger for global gift economies. A design pattern with a framework-agnostic reference implementation.",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "tsx test/settlement.test.ts",
+    "example": "tsx examples/k-wave.ts"
+  },
+  "keywords": [
+    "settlement",
+    "creator-economy",
+    "virtual-currency",
+    "gift-economy",
+    "ppp",
+    "fintech",
+    "live-streaming",
+    "tipping",
+    "fifo-ledger"
+  ],
+  "author": "Neoulsoft Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "github:nskit-io/gift-economy-settlement"
+  },
+  "homepage": "https://github.com/nskit-io/gift-economy-settlement",
+  "devDependencies": {
+    "tsx": "^4.7.0",
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0"
+  }
+}
