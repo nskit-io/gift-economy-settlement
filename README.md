@@ -48,12 +48,14 @@ A fan buys stars cheaply in Jakarta and gifts them to a creator in Seoul who cas
 
 **Settle by the creator's market.** Tempting — but a creator cannot control where their donors bought. Fan market ≠ creator market, so the payout is decoupled from the money that actually came in. Still insolvent.
 
-```
-Fan (Indonesia)   buys 10,000 stars  →  you net ₩4,000  (PPP price, minus store fee)
-        ↓ gifts to
-Creator (Korea)   settles 10,000 stars at Korean face  →  you pay ₩8,000
-                                                            ─────────
-                                                            −₩4,000  per flow
+```mermaid
+flowchart LR
+  F["🇮🇩 Fan<br/>buys 10,000 stars"] -->|"gifts 10,000"| C["🇰🇷 Creator<br/>settles at face value"]
+  F ==>|"platform receives"| IN["₩4,000"]
+  C ==>|"platform pays"| OUT["₩8,000"]
+  IN --> R["−₩4,000 per flow<br/>insolvent on the busiest lane"]
+  OUT --> R
+  style R fill:#3a1220,stroke:#ff5470,color:#ffd7df
 ```
 
 The bug is the premise: **that a star has one global value.** It doesn't.
@@ -72,22 +74,20 @@ The creator's payout now tracks the *real value of the support they received* �
 
 ## Solvency, proven
 
-Let `R` = total realized revenue banked, `p` = payout ratio (0 < p < 1).
+Let $R$ = total realized revenue banked and $p$ = payout ratio, with $0 < p < 1$.
 
-```
-platform_margin  =  R  −  payout
-                 =  R  −  R · p
-                 =  R · (1 − p)   ≥ 0
-```
+$$\text{platform margin} \;=\; R - R\cdot p \;=\; R\,(1-p) \;\ge\; 0$$
 
 Because payout is a fraction **of realized revenue** (not of face value), the platform is solvent by construction — **regardless of PPP spread or cross‑border mix.** The dangerous K‑wave flow now nets positive:
 
-```
-Fan (Indonesia)   buys 10,000 stars  →  realized ₩4,000   (cost‑basis 0.40/star)
-        ↓ gifts to
-Creator (Korea)   settles 10,000 × 0.40 × 0.60 payout      →  ₩2,400
-                                                               ─────────
-Platform keeps    ₩4,000 − ₩2,400                          =  +₩1,600
+```mermaid
+flowchart LR
+  F["🇮🇩 Fan<br/>buys 10,000 stars<br/>basis ₩0.40"] -->|"gifts 10,000"| C["🇰🇷 Creator<br/>settles realized × 0.60"]
+  F ==>|"platform receives"| IN["₩4,000"]
+  C ==>|"platform pays"| OUT["₩2,400"]
+  IN --> R["+₩1,600 margin<br/>solvent, cross-border"]
+  OUT --> R
+  style R fill:#0f2419,stroke:#3ddc84,color:#c8f7dc
 ```
 
 Same flow that bankrupted the naive models now earns margin.
@@ -103,15 +103,13 @@ Split the currency into **paid** (bought, carries cost‑basis) and **free** (bo
 
 Accruals stack in time order. A payout consumes the **oldest accruals first (FIFO)**. Expose that ledger to the creator: for any withdrawal, they see exactly which gifts compose it and the realized value of each.
 
-```
-This payout — oldest first
-  07‑18 · from @stella   · 5,000 stars → ₩4,000
-  07‑19 · from @captain  · 12,000      → ₩9,600
-  07‑20 · from @onedayfan· 3,000       → ₩2,400
-  07‑21 · from @lastcall · 8,000       → ₩6,400
-                                         ───────
-  entries sum = payout total          = ₩22,400   ✓ reconciles
-```
+| When | From | Paid stars | Payout |
+|---|---|--:|--:|
+| 07‑18 | @stella | 5,000 | ₩4,000 |
+| 07‑19 | @captain | 12,000 | ₩9,600 |
+| 07‑20 | @onedayfan | 3,000 | ₩2,400 |
+| 07‑21 | @lastcall | 8,000 | ₩6,400 |
+| | | | **₩22,400** ✓ = payout total |
 
 Trust is a feature. "You received 100,000 stars, here is precisely how it becomes cash" beats a single opaque number.
 
@@ -138,7 +136,7 @@ const ledger = engine.ledger(creatorId);        // FIFO breakdown, reconciles to
 Run the worked K‑wave scenario and the solvency test:
 
 ```bash
-npm install && npm test        # asserts platform_margin ≥ 0 across random cross‑border flows
+npm install && npm test        # asserts platform margin ≥ 0 across random cross‑border flows
 npx tsx examples/k-wave.ts     # prints the Jakarta → Seoul flow
 ```
 
