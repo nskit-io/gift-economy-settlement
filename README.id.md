@@ -4,7 +4,7 @@
 
 **Bagaimana jika sebuah hadiah yang dibeli seharga $0,30 di Jakarta dan dicairkan oleh seorang kreator di Seoul tidak pernah menghabiskan uang Anda sepeser pun?**
 
-> Digunakan oleh [**NSKit**](https://github.com/nskit-io/nskit-io) — *terikat oleh struktur, bebas untuk dikombinasikan.* Ini adalah model settlement di balik **byeol**, sebuah platform live‑streaming global tempat penggemar di pasar berkembang mendukung kreator di seluruh dunia.
+> Digunakan oleh [**NSKit**](https://github.com/nskit-io/nskit-io) — *terikat oleh struktur, bebas untuk dikombinasikan.* Ini adalah model settlement yang dirancang untuk **byeol** (belum digunakan di produksi), sebuah platform live‑streaming global tempat penggemar di pasar berkembang mendukung kreator di seluruh dunia.
 
 > Jual mata uang Anda dengan harga lokal. Bayar kreator dari pendapatan nyata. Tetap solven melintasi setiap perbatasan.
 

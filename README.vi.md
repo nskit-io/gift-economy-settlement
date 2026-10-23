@@ -4,7 +4,7 @@
 
 **Sẽ ra sao nếu một món quà được mua với giá $0.30 ở Jakarta và được một nhà sáng tạo ở Seoul rút tiền mặt mà chẳng tốn của bạn một xu nào?**
 
-> Được sử dụng bởi [**NSKit**](https://github.com/nskit-io/nskit-io) — *bị ràng buộc bởi cấu trúc, tự do trong kết hợp.* Đây là mô hình quyết toán đằng sau **byeol**, một nền tảng phát trực tiếp toàn cầu nơi người hâm mộ ở các thị trường mới nổi ủng hộ các nhà sáng tạo trên khắp thế giới.
+> Được sử dụng bởi [**NSKit**](https://github.com/nskit-io/nskit-io) — *bị ràng buộc bởi cấu trúc, tự do trong kết hợp.* Đây là mô hình quyết toán được thiết kế cho **byeol** (chưa triển khai vào vận hành thực tế), một nền tảng phát trực tiếp toàn cầu nơi người hâm mộ ở các thị trường mới nổi ủng hộ các nhà sáng tạo trên khắp thế giới.
 
 > Bán đồng tiền của bạn theo giá địa phương. Trả cho nhà sáng tạo từ doanh thu thực. Duy trì khả năng thanh toán ở mọi biên giới.
 

@@ -4,7 +4,7 @@
 
 **What if a gift bought for $0.30 in Jakarta and cashed out by a creator in Seoul never cost you a cent?**
 
-> Used by [**NSKit**](https://github.com/nskit-io/nskit-io) — *bound by structure, free to combine.* This is the settlement model behind **byeol**, a global live‑streaming platform where fans in emerging markets support creators worldwide.
+> Used by [**NSKit**](https://github.com/nskit-io/nskit-io) — *bound by structure, free to combine.* This is the settlement model designed for **byeol** (not yet in production), a global live‑streaming platform where fans in emerging markets support creators worldwide.
 
 > Sell your currency at local prices. Pay creators from real revenue. Stay solvent across every border.
 
